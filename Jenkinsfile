@@ -11,7 +11,10 @@ node ('master'){
   
   stage 'Testing'
   sh 'echo "promote Testing"'
-  
-  stage 'Stable'
-  sh 'echo "promote Stable"'
+
+  timeout(time: 300, unit: 'SECONDS') {
+    stage 'Stable'
+    sh 'echo "promote Stable"'
+    sh 'sleep 301'
+  }
  }
