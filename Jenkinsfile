@@ -4,14 +4,14 @@ node ('master'){
   sh 'uptime'
   
   stage 'Test'
-  sh 'echo ServerSpec'
+  sh 'echo "ServerSpec"'
   
   stage 'Unstable'
-  sh 'echo promote Unstable'
+  sh 'echo "promote Unstable"'
   
   stage 'Testing'
-  sh 'echo promote Testing
+  sh 'echo "promote Testing"'
   
   stage 'Stable'
-  sh 'echo promote Stable
+  sh 'echo "promote Stable"'
  }
