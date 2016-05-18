@@ -4,7 +4,7 @@ node ('master'){
   sh 'uptime'
   
   stage 'Test'
-  sh 'echo "ServerSpec"'
+  build job: 'Second', quietPeriod: 30
   
   stage 'Unstable'
   sh 'echo "promote Unstable"'
