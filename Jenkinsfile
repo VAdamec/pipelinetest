@@ -15,6 +15,5 @@ node ('master'){
   timeout(time: 300, unit: 'SECONDS') {
     stage 'Stable'
     sh 'echo "promote Stable"'
-    sh 'sleep 301'
   }
  }
