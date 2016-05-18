@@ -13,6 +13,7 @@ node ('master'){
   sh 'echo "promote Testing"'
 
   timeout(time: 300, unit: 'SECONDS') {
+    input message: 'Waiting for approve', ok: 'Approve'
     stage 'Stable'
     sh 'echo "promote Stable" | tee -a result.txt'
     archive includes: '*.txt'
