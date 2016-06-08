@@ -6,12 +6,12 @@ node ('master'){
   stage 'Live'
   sh 'echo "promote Live"'
 
-  withDockerContainer('centos:7') {
+  withDockerContainer(args: '--volume .:/code:rw,Z', image: 'centos:7') {
     sh 'df -h'
     sh 'ls -la /'
     sh 'yum install -y ruby'
     sh 'gem install serverspec'
-    sh 'rake spec'
+    sh 'cd /code; rake spec'
   }
 
   stage 'Unstable'
