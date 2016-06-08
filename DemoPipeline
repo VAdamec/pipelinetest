@@ -10,10 +10,9 @@ node ('master'){
   sh 'echo "promote Live"'
 
   withDockerContainer(args: "-u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:7') {
-    sh 'rpm -qa | grep -i sudo'
     sh 'ls -la /code'
-    sh '/usr/bin/sudo yum install -y ruby'
-    sh '/usr/bin/sudo gem install serverspec'
+    sh 'yum install -y ruby'
+    sh 'gem install serverspec'
     sh 'cd /code; rake spec'
   }
 
