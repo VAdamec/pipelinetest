@@ -9,7 +9,8 @@ node ('master'){
   withDockerContainer('centos:7') {
     sh 'cat /etc/redhat-release'
     sh 'df -h'
-    sh 'sudo gem install serverspec'
+    sh 'ls -la /'
+    sh 'gem install serverspec'
     sh 'rake spec'
   }
 
