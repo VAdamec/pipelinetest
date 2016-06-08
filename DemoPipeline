@@ -11,7 +11,7 @@ node ('master'){
 
   withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:6') {
     sh 'ls -la /code'
-    sh 'yum install -y ruby httpd'
+    sh 'yum install -y ruby rubygems httpd'
     sh 'gem install serverspec'
     sh 'gem install rake'
     sh 'service start httpd'
