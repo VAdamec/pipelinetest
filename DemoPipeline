@@ -4,11 +4,12 @@ node ('master'){
 
   stage 'Build'
   checkout scm
-  withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:6') {
+  withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'volanja/docker-ruby2.2.0') {
   sh 'echo RUN BUILD TESTS'
     sh 'ls -la /code'
     sh 'yum install httpd -y'
-    sh 'bash /code/provision/install_ruby.sh'
+    #sh 'bash /code/provision/install_ruby.sh'
+    sh 'gem install bundler rake serverspec --no-ri --no-rdoc'
     sh 'service start httpd'
     sh 'chkconfig enable httpd'
     sh 'cd /code; rake spec'
