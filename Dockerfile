@@ -5,7 +5,8 @@ node ('master'){
   
   stage 'Live'
   sh 'echo "promote Live"'
-  docker.image('centos:6').inside {
+  
+  withDockerContainer('centos:6') {
     sh 'cat /etc/redhat-release'
   }
 
