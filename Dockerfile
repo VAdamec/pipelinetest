@@ -1,5 +1,5 @@
 docker.image('centos7').inside {
- yum install httpd -y
- /sbin/service httpd start
- curl -v localhost:80
+ sh 'yum install httpd -y'
+ sh '/sbin/service httpd start'
+ sh 'curl -v localhost:80'
 }
