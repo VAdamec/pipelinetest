@@ -7,9 +7,9 @@ node ('master'){
   sh 'echo "promote Live"'
 
   withDockerContainer('centos:7') {
-    sh 'cat /etc/redhat-release'
     sh 'df -h'
     sh 'ls -la /'
+    sh 'yum install -y ruby'
     sh 'gem install serverspec'
     sh 'rake spec'
   }
