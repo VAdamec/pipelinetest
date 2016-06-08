@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # repository
 cd /tmp
-wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-rpm -Uvh epel-release-6-8.noarch.rpm
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+rpm -Uvh epel-release-6*.rpm
 
 # system update
 yum -y update
