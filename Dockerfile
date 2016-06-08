@@ -1,6 +1,13 @@
-docker.image('centos:6').inside {
+node ('master'){
+  stage 'Build'
+  checkout scm
+  sh 'uptime'
+  
   stage 'Live'
   sh 'echo "promote Live"'
+  docker.image('centos:6').inside {
+    sh 'uname -a'
+  }
 
   stage 'Unstable'
   sh 'echo "promote Unstable"'
