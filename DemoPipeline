@@ -13,6 +13,7 @@ node ('master'){
     sh 'ls -la /code'
     sh 'yum install -y ruby'
     sh 'gem install serverspec'
+    sh 'gem install rake'
     sh 'cd /code; rake spec'
   }
 
