@@ -12,8 +12,8 @@ node ('master'){
   withDockerContainer(args: "--volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:7') {
     sh 'df -h'
     sh 'ls -la /'
-    sh 'yum install -y ruby'
-    sh 'gem install serverspec'
+    sh '/usr/bin/sudo yum install -y ruby'
+    sh '/usr/bin/sudo gem install serverspec'
     sh 'cd /code; rake spec'
   }
 
