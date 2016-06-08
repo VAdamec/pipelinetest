@@ -8,7 +8,6 @@ node ('master'){
   sh 'echo RUN BUILD TESTS'
     sh 'ls -la /code'
     sh 'yum install httpd -y'
-    #sh 'bash /code/provision/install_ruby.sh'
     sh 'gem install bundler rake serverspec --no-ri --no-rdoc'
     sh 'service start httpd'
     sh 'chkconfig enable httpd'
