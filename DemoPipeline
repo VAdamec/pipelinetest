@@ -12,11 +12,13 @@ node ('master'){
   withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:6') {
     sh 'ls -la /code'
     sh 'yum install -y ruby rubygems httpd'
-    sh 'gem install serverspec'
-    sh 'gem install rake'
+    sh 'curl -L get.rvm.io | bash -s stable'
+    sh 'source /etc/profile.d/rvm.sh; rvm reload; rvm install 2.1.0; rvm use 2.1.0 --default'
+    sh 'rvm use 2.1.0; gem install serverspec'
+    sh 'rvm use 2.1.0;  gem install rake'
     sh 'service start httpd'
     sh 'chkconfig enable httpd'
-    sh 'cd /code; rake spec'
+    sh 'cd /code; rvm use 2.1.0; rake spec'
   }
 
   stage 'Unstable'
