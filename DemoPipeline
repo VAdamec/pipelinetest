@@ -10,7 +10,7 @@ node ('master'){
     sh 'yum install httpd -y'
     sh 'gem install serverspec --no-ri --no-rdoc'
     sh 'service httpd start'
-    sh 'chkconfig --add httpd'
+    sh 'chkconfig httpd on'
     sh 'cd /code; rake spec'
   }
 
