@@ -4,10 +4,6 @@ node ('master'){
 
   stage 'Build'
   checkout scm
-  sh 'uptime'
-
-  stage 'Live'
-  sh 'echo "promote Live"'
 
   withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:6') {
     sh 'ls -la /code'
@@ -19,15 +15,17 @@ node ('master'){
   }
 
   stage 'Unstable'
-  sh 'echo "promote Unstable"'
+  sh 'echo "Upload new docker to registry with tag: unstable"'
+  sh 'echo RUN INTEGRATION TESTS'
 
   stage 'Testing'
-  sh 'echo "promote Testing"'
+  sh 'echo "Upload new docker to registry with tag: testing"'
+  sh 'echo RUN UAT TESTS'
 
   timeout(time: 300, unit: 'SECONDS') {
-    input message: 'Waiting for approve', ok: 'Approve'
+    sh 'echo "Upload new docker to registry with tag: stable"'
+    input message: 'Waiting for approve stable image registration', ok: 'Approve'
     stage 'Stable'
-    sh 'echo "promote Stable"'
   }
 
 }
