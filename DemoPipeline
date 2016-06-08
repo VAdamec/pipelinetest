@@ -9,7 +9,7 @@ node ('master'){
   stage 'Live'
   sh 'echo "promote Live"'
 
-  withDockerContainer(args: "--volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:7') {
+  withDockerContainer(args: "-u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:7') {
     sh 'rpm -qa | grep -i sudo'
     sh 'ls -la /code'
     sh '/usr/bin/sudo yum install -y ruby'
