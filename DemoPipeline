@@ -1,4 +1,8 @@
 node ('master'){
+  def buildNumber = env.BUILD_NUMBER
+  def workspace = env.WORKSPACE
+  def buildUrl = env.BUILD_URL
+
   stage 'Build'
   checkout scm
   sh 'uptime'
@@ -6,7 +10,7 @@ node ('master'){
   stage 'Live'
   sh 'echo "promote Live"'
 
-  withDockerContainer(args: "--volume ${WORKSPACE}:/code:rw,Z", image: 'centos:7') {
+  withDockerContainer(args: "--volume ${workspace}:/code:rw,Z", image: 'centos:7') {
     sh 'df -h'
     sh 'ls -la /'
     sh 'yum install -y ruby'
