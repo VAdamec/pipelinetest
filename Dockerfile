@@ -6,7 +6,7 @@ node ('master'){
   stage 'Live'
   sh 'echo "promote Live"'
   docker.image('centos:6').inside {
-    sh 'uname -a'
+    sh 'cat /etc/redhat-release'
   }
 
   stage 'Unstable'
