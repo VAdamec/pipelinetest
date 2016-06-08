@@ -1,16 +1,15 @@
 node ('master'){
+  env.WORKSPACE = pwd()
+  echo "${env.WORKSPACE}"
+
   stage 'Build'
   checkout scm
   sh 'uptime'
 
   stage 'Live'
   sh 'echo "promote Live"'
-  def buildNumber = ${env.BUILD_NUMBER}
-  def workspace = ${env.WORKSPACE}
-  def buildUrl = ${env.BUILD_URL}
-  sh 'echo $workspace'
 
-  withDockerContainer(args: "--volume ${workspace}:/code:rw,Z", image: 'centos:7') {
+  withDockerContainer(args: "--volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:7') {
     sh 'df -h'
     sh 'ls -la /'
     sh 'yum install -y ruby'
