@@ -6,7 +6,6 @@ node ('master'){
   checkout scm
   withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'volanja/docker-ruby2.2.0') {
   sh 'echo RUN BUILD TESTS'
-    sh 'ls -la /code'
     sh 'yum install httpd -y'
     sh 'gem install serverspec --no-ri --no-rdoc'
     sh 'service httpd start'
@@ -22,10 +21,7 @@ node ('master'){
   sh 'echo "Upload new docker to registry with tag: testing"'
   sh 'echo RUN UAT TESTS'
 
-  timeout(time: 300, unit: 'SECONDS') {
-    sh 'echo "Upload new docker to registry with tag: stable"'
-    input message: 'Waiting for approve stable image registration', ok: 'Approve'
-    stage 'Stable'
-  }
+  stage 'Stable'
+  sh 'echo "Upload new docker to registry with tag: stable"'
 
 }
