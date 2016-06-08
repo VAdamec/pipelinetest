@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # repository
 cd /tmp
+yum -y install wget
 wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 rpm -Uvh epel-release-6*.rpm
 
 # system update
 yum -y update
 yum -y groupinstall "Development Tools"
-yum -y install wget libxslt-devel libyaml-devel libxml2-devel gdbm-devel libffi-devel zlib-devel openssl-devel libyaml-devel readline-devel curl-devel openssl-devel pcre-devel git memcached-devel valgrind-devel mysql-devel ImageMagick-devel ImageMagick
+yum -y install libxslt-devel libyaml-devel libxml2-devel gdbm-devel libffi-devel zlib-devel openssl-devel libyaml-devel readline-devel curl-devel openssl-devel pcre-devel git memcached-devel valgrind-devel mysql-devel ImageMagick-devel ImageMagick
 
 # ruby 2.1.0
 version=2.1.0
