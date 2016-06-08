@@ -6,7 +6,7 @@ node ('master'){
   stage 'Live'
   sh 'echo "promote Live"'
   
-  withDockerContainer('centos:6') {
+  withDockerContainer('centos:7') {
     sh 'cat /etc/redhat-release'
   }
 
