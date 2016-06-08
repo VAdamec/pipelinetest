@@ -15,11 +15,11 @@ node ('master'){
     sh 'curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -'
     sh 'curl -L get.rvm.io | bash -s stable'
     sh 'source /etc/profile.d/rvm.sh; rvm reload; rvm install 2.1.0; rvm use 2.1.0 --default'
-    sh 'rvm use 2.1.0; gem install serverspec'
-    sh 'rvm use 2.1.0;  gem install rake'
+    sh 'source /etc/profile.d/rvm.sh;rvm use 2.1.0; gem install serverspec'
+    sh 'source /etc/profile.d/rvm.sh;rvm use 2.1.0;  gem install rake'
     sh 'service start httpd'
     sh 'chkconfig enable httpd'
-    sh 'cd /code; rvm use 2.1.0; rake spec'
+    sh 'cd /code; source /etc/profile.d/rvm.sh; rvm use 2.1.0; rake spec'
   }
 
   stage 'Unstable'
