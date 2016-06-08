@@ -3,7 +3,7 @@
 cd /tmp
 yum -y install wget
 wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
-rpm -Uvh epel-release-6*.rpm
+rpm -i epel-release-latest-6.noarch.rpm
 
 # system update
 yum -y update
