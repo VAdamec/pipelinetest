@@ -12,7 +12,7 @@ node ('master'){
   withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'centos:6') {
     sh 'ls -la /code'
     sh 'yum install httpd -y'
-    sh 'bash /code/install_ruby.sh'
+    sh 'bash /code/provision/install_ruby.sh'
     sh 'service start httpd'
     sh 'chkconfig enable httpd'
     sh 'cd /code; rake spec'
