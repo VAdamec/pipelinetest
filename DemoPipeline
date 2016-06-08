@@ -6,10 +6,7 @@ node ('master'){
   checkout scm
   withDockerContainer(args: "--privileged -u root --volume ${env.WORKSPACE}:/code:rw,Z", image: 'volanja/docker-ruby2.2.0') {
   sh 'echo RUN BUILD TESTS'
-    sh 'yum install httpd -y'
-    sh 'gem install serverspec --no-ri --no-rdoc'
-    sh 'service httpd start'
-    sh 'chkconfig httpd on'
+    sh 'bash /code/provision/simple.sh'
     sh 'cd /code; rake spec'
   }
 
