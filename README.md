@@ -12,6 +12,14 @@
  * just install and start Apache
 * run serverspec tests (sample from http://serverspec.org/)
 
+## Docker playground with Puppet
+* librarian used
+* Centos6 with ruby2 and puppet - credits to Paul https://hub.docker.com/r/pauldavidgilligan/docker-centos6-puppet-ruby215/
+
+      docker pull pauldavidgilligan/docker-centos6-puppet-ruby215
+      docker build -t="centos6-puppetted" ./
+      docker run -P -d -p 127.0.0.1:8081:80 --name DocPupNginx -t centos6-puppetted
+
 ## Structure
 
       ..
@@ -22,6 +30,7 @@
           sample_spec.rb # sample serverspec HTTP test
       Jenkinsfile
       DemoPipeline
+      Dockerfile # example of build and run puppetized docker
 
 # Credits
 * https://documentation.cloudbees.com/docs/cje-user-guide/docker-workflow-sect-inside.html
