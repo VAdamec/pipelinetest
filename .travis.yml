@@ -1,7 +1,6 @@
 language: ruby
 rvm:
   - 2.2
-  - serverspec
 
 services:
     - docker
@@ -9,6 +8,7 @@ services:
 install:
   - docker build -t pipelinetest .
   - docker run -d -p 127.0.0.1:80:80 --name pipelinetest pipelinetest
+  - gem install serverspec --no-ri --no-rdoc
 
 script:
     - docker ps | grep -q pipelinetest
