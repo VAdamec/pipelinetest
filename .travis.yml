@@ -1,7 +1,6 @@
-language: python
-python:
-    - 2.7
-    - 3.5
+language: ruby
+rvm:
+  - 2.2
 
 services:
     - docker
