@@ -23,6 +23,10 @@
       docker build -t="centos6-puppetted" ./
       docker run -P -d -p 127.0.0.1:8081:80 --name DocPupNginx -t centos6-puppetted
 ```
+## Travis playground
+* .travis.yml
+ * build docker
+ * run serverspec (just test listener on port 80)
 
 ## Structure
 
