@@ -1,5 +1,7 @@
 # Jenkins2 pipelines simple demos
 
+[![Build Status](https://travis-ci.org/VAdamec/pipelinetest.svg?branch=master)](https://travis-ci.org/VAdamec/pipelinetest)
+
 ## Simple steps
 * File: Jenkinsfile
  * goes through promotion steps and wait for approve for production
