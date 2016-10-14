@@ -1,6 +1,7 @@
 language: ruby
 rvm:
   - 2.2
+  - serverspec
 
 services:
     - docker
@@ -11,5 +12,7 @@ install:
 
 script:
     - docker ps | grep -q pipelinetest
+    - cd /code; rake spec
+
 
 
