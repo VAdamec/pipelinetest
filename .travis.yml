@@ -12,7 +12,7 @@ install:
 
 script:
     - docker ps | grep -q pipelinetest
-    - cd /code; rake spec
+    - rake spec
 
 
 
