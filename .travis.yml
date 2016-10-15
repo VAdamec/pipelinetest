@@ -14,5 +14,10 @@ script:
     - docker ps | grep -q pipelinetest
     - rake spec
 
-
+notifications:
+  email:
+    recipients:
+      - v.adamec@seznam.cz
+    on_success: always
+    on_failure: always
 
