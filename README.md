@@ -1,5 +1,7 @@
 # Jenkins2 pipelines simple demos
 
+[![Join the chat at https://gitter.im/pipelinetest/Lobby](https://badges.gitter.im/pipelinetest/Lobby.svg)](https://gitter.im/pipelinetest/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/VAdamec/pipelinetest.svg?branch=master)](https://travis-ci.org/VAdamec/pipelinetest)
 
 ## Simple steps
