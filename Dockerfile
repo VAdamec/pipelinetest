@@ -4,4 +4,4 @@ MAINTAINER Vaclav Adamec "vaclav.adamec@avg.com"
 COPY . /code
 RUN /bin/bash /code/provision/simple.sh
 
-CMD ["cat"]
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
