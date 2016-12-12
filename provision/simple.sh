@@ -10,6 +10,7 @@ yum -y update
 
 # simple provision, run apache
 yum install httpd -y
-gem install serverspec --no-ri --no-rdoc
-service httpd start
 chkconfig httpd on
+
+gem install serverspec --no-ri --no-rdoc
+
